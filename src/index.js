@@ -5,6 +5,7 @@ const header = document.createElement('div')
 const input = document.createElement('input')
 const icon = document.createElement('img')
 const buttonSearch = document.createElement('button')
+
 function setAttributes(el, attrs) {
   for (var key in attrs) {
     el.setAttribute(key, attrs[key])
@@ -18,7 +19,6 @@ setAttributes(input, {
   placeholder: 'Search a city...',
   type: 'search',
 })
-console.log(input.attributes)
 
 buttonSearch.classList.add('btn-search')
 setAttributes(icon, {

@@ -1,46 +1,6 @@
 import './fullWeatherInfo.scss'
-const info = {
-  location: {
-    name: 'London',
-    region: 'City of London, Greater London',
-    country: 'United Kingdom',
-    lat: 51.52,
-    lon: -0.11,
-    tz_id: 'Europe/London',
-    localtime_epoch: 1639840881,
-    localtime: '2021-12-18 15:21',
-  },
-  current: {
-    last_updated_epoch: 1639840500,
-    last_updated: '2021-12-18 15:15',
-    temp_c: 9.0,
-    temp_f: 48.2,
-    is_day: 1,
-    condition: {
-      text: 'Overcast',
-      icon: '//cdn.weatherapi.com/weather/64x64/day/122.png',
-      code: 1009,
-    },
-    wind_mph: 6.9,
-    wind_kph: 11.2,
-    wind_degree: 70,
-    wind_dir: 'ENE',
-    pressure_mb: 1038.0,
-    pressure_in: 30.65,
-    precip_mm: 0.0,
-    precip_in: 0.0,
-    humidity: 87,
-    cloud: 100,
-    feelslike_c: 7.2,
-    feelslike_f: 44.9,
-    vis_km: 10.0,
-    vis_miles: 6.0,
-    uv: 4.0,
-    gust_mph: 8.3,
-    gust_kph: 13.3,
-  },
-}
-export default function FullWeatherInfo() {
+
+export default function FullWeatherInfo(info) {
   const body = document.querySelector('body')
 
   const likeButton = document.createElement('button')

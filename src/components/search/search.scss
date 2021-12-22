@@ -1,8 +1,3 @@
-body {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(-140deg, #1b181f, #9198e5);
-}
 ::placeholder {
   color: white;
 }
@@ -47,15 +42,18 @@ body {
     .search-icon {
       height: 3vh;
     }
-    @media (max-width: 324px) {
-      .search {
-        text-align: center;
-        background: none;
-        border: 1px solid white;
-        text-decoration-color: white;
-        color: white;
-        margin-right: 5px;
-      }
+  }
+  @media (max-width: 1680px) and (min-width: 1440px) {
+    .search {
+      height: 3vh;
+      font-size: 25px;
+    }
+    .btn-search {
+      width: 70px;
+      height: 3vh;
+    }
+    .search-icon {
+      height: 3vh;
     }
   }
 }

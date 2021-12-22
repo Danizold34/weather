@@ -1,0 +1,62 @@
+.content {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .link {
+    width: 300px;
+    height: 300px;
+    display: block;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    .favorite-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      .right-div-info {
+        .temp {
+          font-size: 35px;
+        }
+        .Town-info-row {
+          margin-top: 20px;
+          font-size: 20px;
+        }
+        margin-right: 15px;
+      }
+      .left-div-info {
+        img {
+          width: 70px;
+        }
+      }
+      margin-top: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      .info-1 {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 75%;
+        margin-top: 10px;
+        img {
+          width: 40px;
+          filter: invert(1);
+        }
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 7px;
+        }
+      }
+      margin-top: 10px;
+    }
+    margin-top: 10px;
+  }
+}

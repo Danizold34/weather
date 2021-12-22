@@ -6,8 +6,9 @@ export const Router = (location, weatherObject) => {
     case '#/weatherInfo/':
       console.log(weatherObject)
       FullWeatherInfo(weatherObject)
+
       break
-    case '#/search/':
+    case '/':
       Search()
   }
 }

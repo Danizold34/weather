@@ -1,103 +1,118 @@
 import { Router } from '../../router/Router.js'
+import { Container, View, Button } from '../../classes/Classes.js'
+import { buildTree } from '../../services/ComponentsMethods.js'
 import './fullWeatherInfo.scss'
+import { HourForecast } from '../hourForecast/HourForecast.js'
+import { ForecastDay } from '../forecastDay/ForecastDay.js'
 
 export default function FullWeatherInfo(info) {
-  console.log(info.forecast)
-  const body = document.querySelector('body')
-  const backButton = document.createElement('a')
-  const likeButton = document.createElement('a')
-  const infoDiv = document.createElement('div')
-  const headerContainer = document.createElement('div')
-  const container = document.createElement('div')
-  const townName = document.createElement('div')
-  const temp = document.createElement('div')
-  const text = document.createElement('div')
-  const icon = document.createElement('img')
-  const wind_mph = document.createElement('div')
-  const pressure_mb = document.createElement('div')
-  const humidity = document.createElement('div')
-  const leftDivInfo = document.createElement('div')
-  const lastDiv = document.createElement('div')
-
-  backButton.setAttribute('href', '/')
-  AddClass(
-    [
-      townName,
-      headerContainer,
-      temp,
-      text,
-      wind_mph,
-      container,
-      pressure_mb,
-      humidity,
-      leftDivInfo,
-      infoDiv,
-      likeButton,
-      backButton,
-      lastDiv,
-    ],
-    [
-      'town-info',
-      'headerContainer',
-      'temp',
-      'condition',
-      'info',
-      'container',
-      'info',
-      'info',
-      'left-div-info',
-      'right-div-info',
-      'like-button',
-      'back-button',
-      'last-div',
-    ]
+  const body = new Container(document.querySelector('body'), 'body')
+  const fullWeatherContainer = new Container(
+    document.createElement('div'),
+    'full-weather-container'
   )
-
-  backButton.innerHTML =
-    '<img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-vitaly-gorbachev/50/000000/external-back-arrow-arrows-vitaliy-gorbachev-lineal-vitaly-gorbachev.png"/>'
-  likeButton.innerHTML =
+  const headerContainer = new Container(
+    document.createElement('div'),
+    'header-container'
+  )
+  const contentContainer = new Container(
+    document.createElement('div'),
+    'content-container'
+  )
+  const headerInfo = new Container(document.createElement('div'), 'header-info')
+  const townName = new View(
+    document.createElement('div'),
+    'town-name',
+    `<span>${info.location.name}</span>`
+  )
+  const condition = new View(
+    document.createElement('div'),
+    'condition',
+    `<span> ${info.current.condition.text}</span>`
+  )
+  const currentTemp = new View(
+    document.createElement('div'),
+    'current-temp',
+    `<span>${info.current.temp_c}°C</span>`
+  )
+  const feelsTemp = new View(
+    document.createElement('div'),
+    'feels-temp',
+    `<span> Feels like<br> ${info.current.feelslike_c}°C</span>`
+  )
+  const likeButton = new View(
+    document.createElement('a'),
+    'like-button',
     '<img src="https://img.icons8.com/external-prettycons-lineal-prettycons/49/000000/external-favorite-essentials-prettycons-lineal-prettycons.png"/>'
-  humidity.innerHTML =
-    `<span>${info.current.humidity}%</span>` +
-    '<img src="https://img.icons8.com/ios/50/000000/humidity.png"/>'
-  pressure_mb.innerHTML =
-    `<span>${info.current.pressure_mb}mb</span>` +
-    '<img src="https://img.icons8.com/ios/50/000000/pressure.png"/>'
-  wind_mph.innerHTML =
-    `<span>${info.current.wind_mph}mph</span>` +
-    '<img src="https://img.icons8.com/material-outlined/24/000000/wind.png"/>'
-  text.innerHTML = `<span>${info.current.condition.text}</span>`
-  townName.innerHTML = `<span class="Town-info-row">
-   ${info.location.name},
-   ${info.location.country}</span>`
-  temp.innerHTML = `<span>${info.current.temp_c}°C</span>`
+  )
+  const backButton = new Button(
+    document.createElement('a'),
+    'back-button',
+    'href',
+    '/',
+    '<img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-vitaly-gorbachev/50/000000/external-back-arrow-arrows-vitaliy-gorbachev-lineal-vitaly-gorbachev.png"/>'
+  )
+  const hourForecast = new Container(
+    document.createElement('div'),
+    'hour-forecast'
+  )
+  const hour = new Container(document.createElement('div'), 'hour')
+  const dailyForecast = new Container(
+    document.createElement('div'),
+    'daily-forecast'
+  )
+  const day = new Container(document.createElement('div'), 'day')
 
-  setAttributes(icon, {
-    src: `${info.current.condition.icon}`,
-  })
-  Appends(lastDiv, [likeButton, backButton])
-  Appends(leftDivInfo, [icon])
-  Appends(infoDiv, [townName, temp, text])
-  Appends(headerContainer, [infoDiv, leftDivInfo, lastDiv])
-  Appends(container, [humidity, pressure_mb, wind_mph])
-  Appends(body, [headerContainer, container])
+  const root_tree = {
+    component: fullWeatherContainer,
+    children: [
+      {
+        component: headerContainer,
+        children: [
+          { component: backButton },
+          {
+            component: headerInfo,
+            children: [
+              { component: townName },
+              { component: condition },
+              { component: currentTemp },
+              { component: feelsTemp },
+            ],
+          },
+          { component: likeButton },
+        ],
+      },
+      {
+        component: contentContainer,
+        children: [
+          { component: hourForecast, children: [{ component: hour }] },
+          { component: dailyForecast, children: [{ component: day }] },
+        ],
+      },
+    ],
+  }
 
-  backButton.onclick = () => {
+  buildTree(body, root_tree),
+    HourForecast(info.forecast.forecastday[0].hour, hour)
+  // add hour forecast (first var is Forecast(obj), second - container for content)
+  ForecastDay(info, day)
+
+  backButton._el.onclick = () => {
     try {
       const location = window.location.hash
       if (location) {
         Router(location)
         if (body.childElementCount > 1) {
-          console.log('hi')
           body.removeChild(headerContainer)
-          body.removeChild(container)
+          body.removeChild(fullWeatherContainer)
         }
       }
     } catch (e) {
       console.log('Router Error: ', e)
     }
   }
-  likeButton.onclick = () => {
+
+  likeButton._el.onclick = () => {
     if (!localStorage[`${info.location.name} weather`]) {
       localStorage[`${info.location.name} weather`] = JSON.stringify(
         info.location.name
@@ -107,21 +122,5 @@ export default function FullWeatherInfo(info) {
       localStorage.removeItem(`${info.location.name} weather`)
       alert('You deleted town successfully')
     }
-  }
-}
-
-function setAttributes(el, attrs) {
-  for (let key in attrs) {
-    el.setAttribute(key, attrs[key])
-  }
-}
-function Appends(el, attrs) {
-  for (let i = 0; i < attrs.length; i++) {
-    el.appendChild(attrs[i])
-  }
-}
-function AddClass(el, classes) {
-  for (let i = 0; i < classes.length; i++) {
-    el[i].classList.add(classes[i])
   }
 }

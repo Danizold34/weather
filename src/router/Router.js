@@ -4,7 +4,7 @@ import Search from '../components/search/Search.js'
 export const Router = (location, weatherObject) => {
   switch (location) {
     case '#/weatherInfo/':
-      console.log(weatherObject)
+      console.log('weatherObject', weatherObject)
       FullWeatherInfo(weatherObject)
 
       break

@@ -1,105 +1,88 @@
 import './search.scss'
-import axios from 'axios'
 import { Router } from '../../router/Router.js'
 import FullWeatherInfo from '../fullWeatherInfo/FullWeatherInfo.js'
-import { FavoriteTown } from '../favoriteTown/FavoriteTown.js'
-
-const BASE_URL =
-  'http://api.weatherapi.com/v1/forecast.json?key=52f1b073a10e42e5a73230815211312'
-
+import { FavoritesTown } from '../favoritesTown/FavoritesTown.js'
+import { buildTree } from '../../services/ComponentsMethods.js'
+import { BASE_URL } from '../../constant/Constant.js'
+import { Button, Container, Input } from '../../classes/Classes.js'
+import axios from 'axios'
+import { SearchHelper } from '../../services/helper.js'
 export default function Search() {
-  const body = document.querySelector('body')
-  const header = document.createElement('div')
-  const input = document.createElement('input')
-  const icon = document.createElement('img')
-  const buttonSearch = document.createElement('a')
+  const body = new Container(document.querySelector('body'), 'body')
+  const header = new Container(
+    document.createElement('div'),
+    'headers',
+    'id',
+    'head'
+  )
+  const input = new Input(document.createElement('input'), 'search', [
+    { attr: 'id', attrContent: 'townName' },
+    { attr: 'placeholder', attrContent: 'Search a city...' },
+    { attr: 'type', attrContent: 'text' },
+    { attr: 'autocomplete', attrContent: 'off' },
+    { attr: 'required', attrContent: '' },
+  ])
+  const buttonSearch = new Button(
+    document.createElement('a'),
+    'btn-search',
+    'href',
+    '#/weatherInfo/',
+    `<img class="search-icon" src="https://img.icons8.com/ios/30/000000/search--v3.png" >`
+  )
 
-  header.classList.add('headers')
-  input.classList.add('search')
-  header.setAttribute('id', 'head')
-  setAttributes(input, {
-    id: 'townName',
-    placeholder: 'Search a city...',
-    type: 'text',
-    required: '',
-    autocomplete: 'off',
-    // list: 'town',
-  })
-  setAttributes(buttonSearch, {
-    href: '#/weatherInfo/',
-    id: 'search-button',
-  })
-  buttonSearch.classList.add('btn-search')
+  const rootSearch = {
+    component: header,
+    children: [{ component: buttonSearch }, { component: input }],
+  }
 
-  setAttributes(icon, {
-    src: 'https://img.icons8.com/ios/30/000000/search--v3.png',
-  })
-  icon.classList.add('search-icon')
+  buildTree(body, rootSearch)
 
-  body.appendChild(header)
-  header.appendChild(buttonSearch)
-  header.appendChild(input)
-  buttonSearch.appendChild(icon)
-
-  buttonSearch.onclick = () => {
-    console.log('nice click is work')
+  buttonSearch._el.addEventListener('click', () => {
     const townName = document.getElementById('townName').value
+    console.log(townName)
     axios
-      .get(`${BASE_URL}&q=${townName}&days=1&aqi=no&alerts=no`)
+      .get(`${BASE_URL}&q=${townName}&days=5&aqi=no&alerts=no`)
       .then((response) => {
-        try {
-          sessionStorage['weather forecast'] = JSON.stringify(response.data)
-          const location = window.location.hash
-          if (location) {
-            Router(location, response.data)
-            if (body.childElementCount > 1) {
-              const content = document.getElementById('con')
-              body.removeChild(header)
-              body.removeChild(content)
-            }
+        const obj = response.data
+        sessionStorage['weather forecast'] = JSON.stringify(obj)
+        const location = window.location.hash
+        console.log(location)
+        if (location) {
+          console.log(response.data.forecast)
+          Router(location, obj)
+          const bod = document.querySelector('body')
+          if (bod.childElementCount > 1) {
+            const content = document.getElementById('con')
+            const searchHeader = document.getElementById('head')
+            bod.removeChild(searchHeader)
+            bod.removeChild(content)
           }
-        } catch (e) {
-          console.log('Router Error: ', e)
         }
       })
       .catch((error) => {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          // console.log(error.response.data);
-          // console.log(error.response.status);
-          // console.log(error.response.headers);
           alert(
             `message The request was made and the server responded with a status code ${error.response.status}`
           )
         } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the
-          // browser and an instance of
-          // http.ClientRequest in node.js
           alert(error.request)
         } else {
-          // Something happened in setting up the request that triggered an Error
-          alert('Error', error.message)
+          alert(error.message)
         }
-        console.log(error.config)
       })
-  }
+  })
+  SearchHelper()
+  FavoritesTown() // add favorite town
 
   if (window.location.hash === '#/weatherInfo/') {
     const bod = document.querySelector('body')
-    bod.removeChild(header)
+    const searchHeader = document.getElementById('head')
+    bod.removeChild(searchHeader)
     const newObj = JSON.parse(sessionStorage['weather forecast'] || 0)
     FullWeatherInfo(newObj)
-    if (body.childElementCount > 1) {
+    if (bod.childElementCount > 1) {
       const con = document.getElementById('con')
-      body.removeChild(con)
+      bod.removeChild(con)
     }
-  }
-  FavoriteTown()
-}
-function setAttributes(el, attrs) {
-  for (var key in attrs) {
-    el.setAttribute(key, attrs[key])
   }
 }

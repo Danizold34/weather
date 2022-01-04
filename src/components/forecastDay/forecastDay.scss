@@ -1,0 +1,20 @@
+.day-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+  margin-top: 15px;
+  margin-right: 5px;
+  border-top: 1px solid #000;
+  padding-top: 15px;
+  &:first-child {
+    border-top: none;
+  }
+  span {
+    font-size: 20px;
+  }
+  img {
+    filter: invert(1);
+  }
+}

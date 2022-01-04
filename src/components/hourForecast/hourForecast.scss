@@ -1,0 +1,10 @@
+.hour-item {
+  margin-right: 5px;
+  &:first-child {
+    font-size: 16px;
+  }
+  img {
+    width: 40px;
+    filter: invert(1);
+  }
+}

@@ -1,217 +1,69 @@
-.headerContainer {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  .last-div {
-    .like-button {
-      display: flex;
-      border: none;
-      background: none;
-      &:hover {
-        cursor: pointer;
-      }
-
-      img {
-        filter: invert(100%);
-      }
-    }
-    .back-button {
-      display: flex;
-      border: none;
-      background: none;
-      margin-top: 15px;
-      &:hover {
-        cursor: pointer;
-      }
-
-      img {
-        filter: invert(100%);
-      }
-    }
-  }
-
-  .right-div-info {
+.full-weather-container {
+  width: 100%;
+  .header-container {
+    border-bottom: 1px solid rgb(15, 15, 15);
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
-    margin-top: 30px;
-    color: #fff;
-    .town-info {
-      font-size: 40px;
-    }
-    .temp {
-      font-size: 45px;
-      margin-top: 30px;
-    }
-    .condition {
-      width: 75%;
-      text-align: center;
-      font-size: 35px;
-      border: 1px solid #1b181f;
-      background-color: #1b181f;
-      border-radius: 20px;
-      margin-top: 30px;
-    }
-  }
-  .left-div-info {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    img {
-      width: 300px;
-    }
-  }
-}
-.container {
-  margin-top: 100px;
-  display: flex;
-
-  align-items: center;
-  flex-direction: column;
-
-  .info {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    width: 50%;
-    color: #fff;
+    filter: invert(1);
     margin-top: 20px;
-    border: 1px solid white;
-    border-radius: 20px;
-
-    span {
-      font-size: 28px;
-      margin: 7px;
-    }
-    img {
-      filter: invert(100%);
-      width: 50px;
-      margin: 7px;
-    }
-  }
-}
-@media (min-width: 1820px) {
-  .headerContainer {
-    .last-div {
-      .like-button {
-        img {
-          width: 90px;
-        }
-      }
-      .back-button {
-        img {
-          width: 90px;
-        }
-      }
-    }
-
-    .right-div-info {
-      .town-info {
-        font-size: 60px;
-      }
-      .temp {
-        font-size: 65px;
-      }
-      .condition {
-        font-size: 55px;
-      }
-    }
-    .left-div-info {
-      img {
-        width: 500px;
-      }
-    }
-  }
-  .container {
-    margin-top: 150px;
-
-    .info {
-      width: 60%;
-      margin-top: 40px;
-      span {
-        font-size: 68px;
-      }
-      img {
-        width: 102px;
-      }
-    }
-  }
-}
-@media (max-width: 1024px) {
-  .headerContainer {
-    .right-div-info {
-      .town-info {
+    padding: 20px;
+    .header-info {
+      .town-name {
         font-size: 30px;
-      }
-      .temp {
-        font-size: 35px;
+        text-align: center;
       }
       .condition {
+        font-size: 16px;
+        text-align: center;
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+      }
+      .current-temp {
         font-size: 25px;
+        text-align: center;
+        margin-top: 5px;
       }
-    }
-    .left-div-info {
-      img {
-        width: 250px;
-      }
-    }
-  }
-}
-@media (max-width: 625px) {
-  .headerContainer {
-    flex-direction: column;
-    .last-div {
-      .like-button {
-        margin-right: 0;
-        margin-top: 15px;
-        img {
-          width: 40px;
-        }
-      }
-      .back-button {
-        margin-right: 0;
-        margin-top: 15px;
-        img {
-          width: 40px;
-        }
-      }
-    }
-    .right-div-info {
-      .town-info {
+      .feels-temp {
         font-size: 20px;
-      }
-      .temp {
-        font-size: 25px;
-      }
-      .condition {
-        font-size: 15px;
-      }
-    }
-    .left-div-info {
-      img {
-        width: 150px;
+        text-align: center;
       }
     }
   }
-  .container {
-    margin-top: 60px;
-    .info {
-      width: 60%;
-
-      span {
-        font-size: 18px;
-      }
-      img {
-        width: 33px;
-      }
-    }
-  }
-}
-@media (max-width: 425px) {
-  .headerContainer {
+  .content-container {
+    filter: invert(1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    margin-top: 20px;
+    .hour-forecast {
+      width: 100%;
+      border-bottom: 1px solid black;
+      display: flex;
+      justify-content: center;
+      .hour {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-bottom: 15px;
+      }
+    }
+    .daily-forecast {
+      width: 100%;
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+
+      .day {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
   }
 }

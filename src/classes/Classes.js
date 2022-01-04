@@ -30,9 +30,7 @@ export class Container extends Block {
   AddClass() {
     this._el.classList.add(this._style)
   }
-  AddContent() {
-    console.log('it is container, nothing to add')
-  }
+
   AddAttribute() {
     this._el.setAttribute(this._attr, this._attrContent)
   }

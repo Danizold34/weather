@@ -85,9 +85,7 @@ export class Input extends Block {
   AddClass() {
     this._el.classList.add(this._style)
   }
-  AddContent() {
-    console.log('xxppxpx')
-  }
+
   AddAttribute() {
     this._attr.forEach((item) => {
       this._el.setAttribute(item.attr, item.attrContent)

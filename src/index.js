@@ -1,4 +1,4 @@
-// import { FavoriteTown } from './components/favoriteTown/FavoriteTown.js'
+// import { FavoritesTown } from './components/favoritesTown/FavoritesTown.js'
 import './style/index.scss'
 import Search from './components/search/Search.js'
 

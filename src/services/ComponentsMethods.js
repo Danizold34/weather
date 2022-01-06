@@ -2,7 +2,7 @@ export const buildTree = (main_el, tree) => {
   const currentComponent = tree.component
 
   console.log(main_el)
-  main_el.render(currentComponent)
+  main_el.Render(currentComponent)
   currentComponent.AddClass()
   if (currentComponent._toHtml != undefined) {
     currentComponent.AddContent()

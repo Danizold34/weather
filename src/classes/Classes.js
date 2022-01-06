@@ -11,7 +11,7 @@ export class Block {
   AddClass() {
     throw new Error('nothing to add!')
   }
-  render = () => {
+  Render = () => {
     throw new Error('nothing to render')
   }
 }
@@ -24,7 +24,7 @@ export class Container extends Block {
   get el() {
     return this._el
   }
-  render = (elToMount) => {
+  Render = (elToMount) => {
     this._el.appendChild(elToMount.el)
   }
   AddClass() {
@@ -60,7 +60,7 @@ export class Button extends Block {
   get el() {
     return this._el
   }
-  render = (elToMount) => {
+  Render = (elToMount) => {
     this._el.appendChild(elToMount.el)
   }
   AddAttribute() {
@@ -71,6 +71,9 @@ export class Button extends Block {
   }
   AddClass() {
     this._el.classList.add(this._style)
+  }
+  OnClick(fn) {
+    this._el.addEventListener('click', fn)
   }
 }
 

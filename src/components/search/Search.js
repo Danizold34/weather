@@ -37,7 +37,7 @@ export default function Search() {
 
   buildTree(body, rootSearch)
 
-  buttonSearch._el.addEventListener('click', () => {
+  buttonSearch.OnClick(() => {
     const townName = document.getElementById('townName').value
     console.log(townName)
     axios

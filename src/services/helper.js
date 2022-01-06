@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const SearchHelper = () => {
   const debounce = (fn, waitTime) => {
     let timeout
@@ -10,8 +12,12 @@ export const SearchHelper = () => {
       timeout = setTimeout(fnCall, waitTime)
     }
   }
-  const onChange = (e) => {
-    console.log(e.target.value)
+  const onChange = () => {
+    axios
+      .get(`http://api.travelpayouts.com/data/ru/cities.json`)
+      .then((response) => {
+        console.log(response)
+      })
   }
 
   const ChangeDebounce = debounce(onChange, 280)

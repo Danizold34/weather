@@ -92,7 +92,7 @@ export const FavoriteTown = (content) => {
 
         buildTree(content, rootFavorites)
 
-        link._el.onclick = () => {
+        link.OnClick(() => {
           const location = window.location.hash
           if (location) {
             Router(location, response.data)
@@ -106,7 +106,7 @@ export const FavoriteTown = (content) => {
               bod.removeChild(head)
             }
           }
-        }
+        })
       })
   }
 }

@@ -1,6 +1,6 @@
 // import { FavoritesTown } from './components/favoritesTown/FavoritesTown.js'
 import './style/index.scss'
-import Search from './components/search/Search.js'
+import { Search } from './components/search/Search.js'
 
 Search()
 

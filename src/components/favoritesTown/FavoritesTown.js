@@ -1,18 +1,20 @@
-import { Container } from '../../classes/Classes.js'
 import { FavoriteTown } from '../favoriteTown/FavoriteTown.js'
 import { buildTree } from '../../services/ComponentsMethods.js'
 import './favoriteTown.scss'
+import { BodyContainer, contentContainer } from '../body/Body.js'
+const rootFavorite = {
+  component: contentContainer,
+}
+
 export const FavoritesTown = () => {
-  const body = new Container(document.querySelector('body'), 'body')
-  const content = new Container(
-    document.createElement('div'),
-    'content',
-    'id',
-    'con'
-  )
-  FavoriteTown(content)
-  const rootFavorite = {
-    component: content,
+  const keys = Object.keys(localStorage)
+  while (contentContainer.el.lastChild) {
+    contentContainer.el.removeChild(contentContainer.el.lastChild)
   }
-  buildTree(body, rootFavorite)
+  keys.map((key) => {
+    const name = JSON.parse(localStorage[key])
+
+    FavoriteTown(contentContainer, name)
+  })
+  buildTree(BodyContainer, rootFavorite)
 }

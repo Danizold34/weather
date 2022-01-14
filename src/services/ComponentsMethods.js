@@ -1,15 +1,13 @@
 export const buildTree = (main_el, tree) => {
   const currentComponent = tree.component
 
-  console.log(main_el)
-  main_el.Render(currentComponent)
-  currentComponent.AddClass()
+  main_el.addChild(currentComponent)
+  currentComponent.addClass()
   if (currentComponent._toHtml != undefined) {
-    currentComponent.AddContent()
+    currentComponent.addContent()
   }
   if (currentComponent._attr != undefined) {
-    currentComponent.AddAttribute()
-    console.log(currentComponent)
+    currentComponent.addAttribute()
   }
   if (tree.children && tree.children.length !== 0) {
     tree.children.forEach((treeItem) => {

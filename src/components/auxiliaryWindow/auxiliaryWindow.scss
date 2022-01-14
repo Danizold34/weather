@@ -1,0 +1,27 @@
+.ul-for-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 75vw;
+
+  li {
+    width: 75vw;
+    text-decoration-color: white;
+    color: white;
+    border: 1px solid white;
+  }
+  li:hover {
+    border: 3px solid white;
+  }
+  @media (min-width: 1920px) {
+    li {
+      font-size: 48px;
+      height: 3vh;
+    }
+  }
+  @media (max-width: 1680px) and (min-width: 1440px) {
+    li {
+      font-size: 20px;
+    }
+  }
+}

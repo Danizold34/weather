@@ -1,0 +1,23 @@
+.day-items {
+  display: flex;
+  flex-direction: column;
+  .day-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+
+    border: 1px solid #000;
+    padding: 50px;
+
+    span {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+    img {
+      filter: invert(1);
+      margin-right: 10px;
+    }
+  }
+}

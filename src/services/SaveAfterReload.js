@@ -2,7 +2,7 @@ import {
   BodyContainer,
   contentContainer,
   headerSearch,
-} from '../components/body/Body.js'
+} from '../components/globalClasses/GlobalClasses.js.js'
 import { FullWeatherInfo } from '../components/fullWeatherInfo/FullWeatherInfo.js'
 export const SaveAfterReload = () => {
   if (window.location.hash === '#/weatherInfo/') {

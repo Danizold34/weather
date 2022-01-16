@@ -1,7 +1,10 @@
 import { FavoriteTown } from '../favoriteTown/FavoriteTown.js'
 import { buildTree } from '../../services/ComponentsMethods.js'
 import './favoriteTown.scss'
-import { BodyContainer, contentContainer } from '../body/Body.js'
+import {
+  BodyContainer,
+  contentContainer,
+} from '../globalClasses/GlobalClasses.js.js'
 const rootFavorite = {
   component: contentContainer,
 }

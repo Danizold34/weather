@@ -4,7 +4,10 @@ import { buildTree } from '../../services/ComponentsMethods.js'
 import './fullWeatherInfo.scss'
 import { HourForecast } from '../hourForecast/HourForecast.js'
 import { ForecastDay } from '../forecastDay/ForecastDay.js'
-import { BodyContainer, fullWeatherContainer } from '../body/Body.js'
+import {
+  BodyContainer,
+  fullWeatherContainer,
+} from '../globalClasses/GlobalClasses.js.js'
 const headerContainer = new Container(
   document.createElement('div'),
   'header-container'

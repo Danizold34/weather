@@ -4,7 +4,7 @@ import './favoriteTown.scss'
 import {
   BodyContainer,
   contentContainer,
-} from '../globalClasses/GlobalClasses.js.js'
+} from '../globalBlocks/GlobalBlocks.js'
 const rootFavorite = {
   component: contentContainer,
 }

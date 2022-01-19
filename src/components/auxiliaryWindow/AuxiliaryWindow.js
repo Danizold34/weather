@@ -1,7 +1,7 @@
 import cities from 'cities.json'
 import { Li, Ul } from '../../classes/Classes.js'
 import { buildTree } from '../../services/ComponentsMethods.js'
-import { headerSearch, input } from '../globalClasses/GlobalClasses.js.js'
+import { headerSearch, input } from '../globalBlocks/GlobalBlocks.js'
 import './auxiliaryWindow.scss'
 
 const towns = cities.map((value) => {

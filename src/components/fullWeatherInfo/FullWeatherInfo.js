@@ -7,7 +7,7 @@ import { ForecastDay } from '../forecastDay/ForecastDay.js'
 import {
   BodyContainer,
   fullWeatherContainer,
-} from '../globalClasses/GlobalClasses.js.js'
+} from '../globalBlocks/GlobalBlocks.js'
 const headerContainer = new Container(
   document.createElement('div'),
   'header-container'

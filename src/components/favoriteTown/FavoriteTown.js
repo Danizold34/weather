@@ -2,10 +2,7 @@ import { Button, Container, View } from '../../classes/Classes.js'
 import { Router } from '../../router/Router.js'
 import { buildTree } from '../../services/ComponentsMethods.js'
 import { getInfoTown } from '../../services/GetInfoTown.js'
-import {
-  BodyContainer,
-  headerSearch,
-} from '../globalClasses/GlobalClasses.js.js'
+import { BodyContainer, headerSearch } from '../globalBlocks/GlobalBlocks.js'
 
 export const FavoriteTown = async (contentContainer, name) => {
   const keys = Object.keys(localStorage)

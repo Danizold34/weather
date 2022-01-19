@@ -9,7 +9,7 @@ import {
   headerSearch,
   contentContainer,
   input,
-} from '../globalClasses/GlobalClasses.js.js'
+} from '../globalBlocks/GlobalBlocks.js'
 import { getInfoTown } from '../../services/GetInfoTown.js'
 import { SaveAfterReload } from '../../services/SaveAfterReload.js'
 

@@ -12,6 +12,7 @@ import {
 } from '../globalBlocks/GlobalBlocks.js'
 import { getInfoTown } from '../../services/GetInfoTown.js'
 import { SaveAfterReload } from '../../services/SaveAfterReload.js'
+import { setValueFromSessionStorage } from '../../services/GetAndRemoveValueFromStorages.js'
 
 const form = new Container(document.createElement('div'), 'form')
 
@@ -40,7 +41,7 @@ export const Search = () => {
 
     try {
       const { data } = await getInfoTown.getInfoByName(townName)
-      sessionStorage['weather forecast'] = JSON.stringify(data)
+      setValueFromSessionStorage(data)
 
       const location = window.location.hash
       if (BodyContainer.el.childElementCount > 1) {

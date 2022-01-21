@@ -1,12 +1,12 @@
 import { Button, Container, View } from '../../classes/Classes.js'
 import { Router } from '../../router/Router.js'
 import { buildTree } from '../../services/ComponentsMethods.js'
+import { setValueFromSessionStorage } from '../../services/GetAndRemoveValueFromStorages.js'
 import { getInfoTown } from '../../services/GetInfoTown.js'
 import { BodyContainer, headerSearch } from '../globalBlocks/GlobalBlocks.js'
 
 export const FavoriteTown = async (contentContainer, name) => {
   const keys = Object.keys(localStorage)
-  console.log(contentContainer.el)
 
   if (contentContainer.el.childElementCount < keys.length) {
     const link = new Button(
@@ -81,8 +81,7 @@ export const FavoriteTown = async (contentContainer, name) => {
 
       BodyContainer.removeChild(contentContainer)
       BodyContainer.removeChild(headerSearch)
-      sessionStorage['weather forecast'] = JSON.stringify(data)
-      console.log('this info', data)
+      setValueFromSessionStorage(data)
       Router('#/weatherInfo/', data)
     })
 

@@ -97,7 +97,6 @@ export const auxiliaryWindow = () => {
   liThird.onClick(getNewInput)
 }
 function getNewInput(e) {
-  console.log(e.srcElement.innerHTML)
   const textInLi = e.srcElement.innerHTML
   input.el.value = textInLi
 }

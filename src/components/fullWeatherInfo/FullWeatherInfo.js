@@ -8,6 +8,10 @@ import {
   BodyContainer,
   fullWeatherContainer,
 } from '../globalBlocks/GlobalBlocks.js'
+import {
+  removeValueFromLocalStorage,
+  setValueFromLocalStorage,
+} from '../../services/GetAndRemoveValueFromStorages.js'
 const headerContainer = new Container(
   document.createElement('div'),
   'header-container'
@@ -98,12 +102,11 @@ export const FullWeatherInfo = (info) => {
     console.log('entry with ', info.location.name)
 
     if (localStorage[`${info.location.name} weather`]) {
-      localStorage.removeItem(`${info.location.name} weather`)
+      removeValueFromLocalStorage(info.location.name)
       alert('You deleted town successfully')
     } else {
-      localStorage[`${info.location.name} weather`] = JSON.stringify(
-        info.location.name
-      )
+      setValueFromLocalStorage(info.location.name)
+
       alert('You added new town successfully')
     }
   }

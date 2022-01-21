@@ -38,7 +38,6 @@ export class Container extends Block {
     this._el.setAttribute(this._attr, this._attrContent)
   }
   removeChild = (elToRemove) => {
-    console.log('elToRemove', elToRemove)
     this._el.removeChild(elToRemove.el)
   }
 }

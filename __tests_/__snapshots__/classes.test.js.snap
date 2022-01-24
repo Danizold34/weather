@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check methods of Button Class: <a class="container"id="test-container"><span>Hi People</span></a> 1`] = `
+Object {
+  "value": <a
+    class="test-container"
+    href="#/"
+  >
+    <span>
+       Hi People
+    </span>
+  </a>,
+}
+`;
+
+exports[`Check methods of Container Class: <div class="container" id="test-container"></div> 1`] = `
+Object {
+  "value": <div
+    class="container"
+    id="test-container"
+  />,
+}
+`;
+
+exports[`Check methods of Container Class: <div class="container" id="test-container"><div class="test-child-of-container"></div></div> 1`] = `
+Object {
+  "value": <div
+    class="container"
+    id="test-container"
+  >
+    <div
+      class="test-child-of-container"
+    />
+  </div>,
+}
+`;
+
+exports[`Check methods of Input Class: <input autocomplete="off" class="test-input"id="townName"list="select"placeholder="Search a city..."role="combobox"type="search"/> 1`] = `
+Object {
+  "value": <input
+    autocomplete="off"
+    class="test-input"
+    id="townName"
+    list="select"
+    placeholder="Search a city..."
+    role="combobox"
+    type="search"
+  />,
+}
+`;
+
+exports[`Check methods of Li Class 1`] = `
+Object {
+  "value": <li
+    class="li-test"
+    role="presentation"
+  >
+    <span>
+      TownName
+    </span>
+  </li>,
+}
+`;
+
+exports[`Check methods of Ul Class 1`] = `
+Object {
+  "value": <ul
+    class="test-ul-for-search"
+    role="listbox"
+  >
+    <div
+      class="test-child-of-container"
+    />
+  </ul>,
+}
+`;
+
+exports[`Check methods of Ul Class 2`] = `
+Object {
+  "value": <ul
+    class="test-ul-for-search"
+    role="listbox"
+  />,
+}
+`;
+
+exports[`Check methods of View Class: <div class="test-view-block"><span> Hi People</span></div> 1`] = `
+Object {
+  "value": <div
+    class="test-view-block"
+  >
+    <span>
+       Hi People
+    </span>
+  </div>,
+}
+`;

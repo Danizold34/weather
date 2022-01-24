@@ -1,10 +1,18 @@
-.hour-item {
-  margin-right: 5px;
-  &:first-child {
-    font-size: 16px;
-  }
-  img {
-    width: 40px;
-    filter: invert(1);
+.hour-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  .hour-item {
+    padding: 10px;
+
+    &:first-child {
+      font-size: 16px;
+    }
+    img {
+      width: 40px;
+      filter: invert(1);
+    }
   }
 }

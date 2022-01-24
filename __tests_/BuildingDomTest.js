@@ -1,4 +1,4 @@
-export const buildTree = (main_el, tree) => {
+const buildTree = (main_el, tree) => {
   const currentComponent = tree.component
 
   main_el.addChild(currentComponent)
@@ -15,3 +15,4 @@ export const buildTree = (main_el, tree) => {
     })
   } else return
 }
+module.exports = buildTree
